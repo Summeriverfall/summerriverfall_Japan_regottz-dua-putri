@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Book your appointment at Regottz dua putri — hair salon in Nakatsu, Osaka">
+  <title>Book Appointment — Regottz dua putri</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Noto+Sans+JP:wght@300;400;500&family=Noto+Sans+SC:wght@300;400;500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --cream: #faf7f2;
+      --cream-dark: #e3efe8;
+      --blush: #cfe6d8;
+      --blush-deep: #aed4bd;
+      --charcoal: #2c2c2c;
+      --charcoal-light: #5a5a5a;
+      --gold: #189246;
+      --gold-light: #83cb9a;
+      --white: #ffffff;
+      --font-display: "Cormorant Garamond", "Noto Sans JP", serif;
+      --font-body: "Noto Sans JP", "Noto Sans SC", "Inter", sans-serif;
+    }
+
+    body {
+      font-family: var(--font-body);
+      font-weight: 300;
+      background: var(--cream);
+      color: var(--charcoal);
+      min-height: 100vh;
+      padding: 40px 20px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .booking-container {
+      max-width: 600px;
+      margin: 0 auto;
+      animation: fadeInUp 0.8s ease-out;
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--charcoal-light);
+      text-decoration: none;
+      font-size: 0.95rem;
+      margin-bottom: 2rem;
+      transition: color 0.3s;
+    }
+
+    .back-link:hover { color: var(--gold); }
+
+    .booking-header {
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+
+    .brand-badge {
+      display: inline-flex;
+      align-items: center;
+      background: rgba(24, 146, 70,0.1);
+      border: 1px solid rgba(24, 146, 70,0.2);
+      border-radius: 50px;
+      padding: 8px 20px;
+      margin-bottom: 1rem;
+      font-size: 0.75rem;
+      color: var(--gold);
+      font-weight: 500;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+
+    .booking-title {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 5vw, 2.5rem);
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      color: var(--charcoal);
+      margin-bottom: 0.5rem;
+    }
+
+    .booking-subtitle {
+      font-size: 1rem;
+      color: var(--charcoal-light);
+      font-weight: 300;
+    }
+
+    .booking-card {
+      background: var(--white);
+      border: 1px solid rgba(24, 146, 70,0.12);
+      border-radius: 16px;
+      padding: 2.5rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    }
+
+    .form-group {
+      margin-bottom: 1.75rem;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--charcoal);
+      margin-bottom: 0.5rem;
+      letter-spacing: 0.05em;
+    }
+
+    .form-input,
+    .form-select {
+      width: 100%;
+      padding: 14px 16px;
+      border: 1px solid rgba(24, 146, 70,0.2);
+      border-radius: 8px;
+      font-size: 1rem;
+      font-family: inherit;
+      color: var(--charcoal);
+      background: var(--cream);
+      transition: all 0.3s;
+    }
+
+    .form-input:focus,
+    .form-select:focus {
+      outline: none;
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px rgba(24, 146, 70,0.1);
+      background: var(--white);
+    }
+
+    .form-input::placeholder { color: var(--charcoal-light); }
+
+    .form-error {
+      color: #E74C3C;
+      font-size: 0.85rem;
+      margin-top: 0.5rem;
+      display: none;
+    }
+
+    .form-group.error .form-error { display: block; }
+    .form-group.error .form-input,
+    .form-group.error .form-select { border-color: #E74C3C; }
+
+    .submit-button {
+      width: 100%;
+      padding: 16px;
+      background: #1E8E4F;
+      color: #fff;
+      border: none;
+      border-radius: 50px;
+      font-size: 1.05rem;
+      font-weight: 600;
+      font-family: inherit;
+      cursor: pointer;
+      transition: all 0.3s;
+      margin-top: 0.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      box-shadow: 0 2px 8px rgba(30,142,79,0.25);
+    }
+
+    .submit-button:hover {
+      background: #20A05A;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 16px rgba(30,142,79,0.35);
+    }
+
+    .submit-button:active { transform: translateY(0); }
+    .submit-button:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+
+    .whatsapp-icon {
+      width: 20px; height: 20px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .whatsapp-icon svg { width: 100%; height: 100%; fill: currentColor; }
+
+    .success-message {
+      display: none;
+      background: rgba(39,174,96,0.1);
+      border: 1px solid #27AE60;
+      border-radius: 8px;
+      padding: 1rem;
+      margin-bottom: 1.5rem;
+      color: #27AE60;
+      font-size: 0.95rem;
+      text-align: center;
+    }
+
+    .success-message.show {
+      display: block;
+      animation: fadeInUp 0.5s ease-out;
+    }
+
+    .additional-services {
+      display: none;
+      margin-top: 1.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px dashed #ddd;
+    }
+
+    .additional-services.show {
+      display: block;
+      animation: fadeIn 0.3s ease-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+
+    .guest-service-row {
+      background: #f9f9f9;
+      padding: 1rem;
+      border-radius: 8px;
+      margin-bottom: 0.75rem;
+    }
+
+    .guest-service-row:last-child { margin-bottom: 0; }
+
+    .guest-label {
+      font-size: 0.85rem;
+      color: #666;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+    }
+
+    .guest-service-row .form-select { background: #fff; }
+
+    .same-package-label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      font-weight: 400;
+      font-size: 0.9rem;
+    }
+
+    .same-package-label input[type="checkbox"] {
+      width: auto;
+      margin: 0;
+    }
+
+    @media (max-width: 768px) {
+      body { padding: 20px 15px; }
+      .booking-card { padding: 2rem 1.5rem; }
+    }
+
+    @media (max-width: 568px) {
+      .booking-card { padding: 1.75rem 1.25rem; }
+      .form-input, .form-select { padding: 12px 14px; font-size: 0.95rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="booking-container">
+    <a href="landing.html" class="back-link">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 12L6 8L10 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Back to Home
+    </a>
+
+    <div class="booking-header">
+      <div class="brand-badge">BOOK YOUR APPOINTMENT</div>
+      <h1 class="booking-title">Regottz dua putri</h1>
+      <p class="booking-subtitle">Fill in the form below to book your appointment</p>
+    </div>
+
+    <div class="booking-card">
+      <div class="success-message" id="successMessage">
+        Your booking information has been prepared. You will be redirected to WhatsApp shortly...
+      </div>
+
+      <form id="bookingForm">
+        <div class="form-group" id="serviceGroup">
+          <label for="service" class="form-label">Service *</label>
+          <select id="service" name="service" class="form-select" required>
+            <option value="">Select a service</option>
+            <optgroup label="Cut (shampoo &amp; blow-dry incl.)">
+              <option value="Ladies Cut">Ladies' Cut — ¥4,950~</option>
+              <option value="Mens Cut">Men's Cut (incl. eyebrow) — ¥6,050</option>
+              <option value="Junior High / High School Cut">Junior High / High School Cut — ¥3,850</option>
+              <option value="Elementary School Cut">Elementary School Cut — ¥3,300</option>
+            </optgroup>
+            <optgroup label="Color">
+              <option value="Esthe Color">Esthe Color — ¥8,250~</option>
+              <option value="Weaving Color">Weaving Color — ¥4,950~</option>
+              <option value="Half Weaving Color">Half Weaving Color — ¥2,750~</option>
+              <option value="Double Color">Double Color — ¥7,150</option>
+            </optgroup>
+            <optgroup label="Perm &amp; Straightening">
+              <option value="Creep Perm Esthe">Creep Perm Esthe — ¥17,600~</option>
+              <option value="Super Straight Esthe">Super Straight Esthe (Straightening) — ¥23,100~</option>
+              <option value="Volume Shape Treatment Esthe">Volume Shape Treatment Esthe (Straightening) — ¥17,600</option>
+            </optgroup>
+            <optgroup label="Treatment &amp; Head Spa">
+              <option value="Original Treatment">Original Treatment — ¥1,650</option>
+              <option value="Cuticle Care Treatment">Cuticle Care Treatment — ¥2,200</option>
+              <option value="Holistic Care Treatment">Holistic Care Treatment — ¥3,300</option>
+              <option value="Double Moist Care Treatment">Double Moist Care Treatment — ¥4,400</option>
+              <option value="Hollywood Treatment">Hollywood Treatment — ¥11,500</option>
+              <option value="Head Spa">Head Spa (from 15 min) — ¥2,200~</option>
+            </optgroup>
+          </select>
+          <div class="form-error">Please select a service</div>
+        </div>
+
+        <div class="form-group" id="dateGroup">
+          <label for="date" class="form-label">Date *</label>
+          <input type="date" id="date" name="date" class="form-input" required>
+          <div class="form-error">Please select a date</div>
+        </div>
+
+        <div class="form-group" id="timeGroup">
+          <label for="time" class="form-label">Time *</label>
+          <input type="time" id="time" name="time" class="form-input" required>
+          <div class="form-error">Please select a time</div>
+        </div>
+
+        <div class="form-group" id="guestsGroup">
+          <label for="guests" class="form-label">Number of Guests *</label>
+          <select id="guests" name="guests" class="form-select" required>
+            <option value="">Select number of guests</option>
+            <option value="1">1 Guest</option>
+            <option value="2">2 Guests</option>
+            <option value="3">3 Guests</option>
+            <option value="4">4 Guests</option>
+          </select>
+          <div class="form-error">Please select number of guests</div>
+        </div>
+
+        <div class="form-group" id="nameGroup">
+          <label for="name" class="form-label">Name *</label>
+          <input type="text" id="name" name="name" class="form-input" placeholder="Enter your name" required>
+          <div class="form-error">Please enter your name</div>
+        </div>
+
+        <div class="form-group" id="samePackageGroup" style="display: none;">
+          <label class="same-package-label">
+            <input type="checkbox" id="samePackage" name="samePackage" checked>
+            <span>All guests choose the same package</span>
+          </label>
+        </div>
+
+        <div class="additional-services" id="additionalServices">
+          <h4 style="font-size: 1rem; color: #b8956b; margin-bottom: 1rem;">Additional Guests' Services (if different)</h4>
+          <div id="additionalServicesContainer"></div>
+        </div>
+
+        <button type="submit" class="submit-button" id="submitButton">
+          <span class="whatsapp-icon">
+            <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.884-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+          </span>
+          <span>Submit &amp; Open WhatsApp</span>
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    const WHATSAPP_NUMBER = '85290744644';
+
+    var serviceInfo = {
+      'Ladies Cut': { price: 4950 },
+      'Mens Cut': { price: 6050 },
+      'Junior High / High School Cut': { price: 3850 },
+      'Elementary School Cut': { price: 3300 },
+      'Esthe Color': { price: 8250 },
+      'Weaving Color': { price: 4950 },
+      'Half Weaving Color': { price: 2750 },
+      'Double Color': { price: 7150 },
+      'Creep Perm Esthe': { price: 17600 },
+      'Super Straight Esthe': { price: 23100 },
+      'Volume Shape Treatment Esthe': { price: 17600 },
+      'Original Treatment': { price: 1650 },
+      'Cuticle Care Treatment': { price: 2200 },
+      'Holistic Care Treatment': { price: 3300 },
+      'Double Moist Care Treatment': { price: 4400 },
+      'Hollywood Treatment': { price: 11500 },
+      'Head Spa': { price: 2200 }
+    };
+
+    var serviceOptionsHTML = document.getElementById('service').innerHTML;
+
+    var dateInput = document.getElementById('date');
+    var today = new Date().toISOString().split('T')[0];
+    dateInput.setAttribute('min', today);
+
+    // Pre-select service from URL parameter
+    (function() {
+      var params = new URLSearchParams(window.location.search);
+      var svc = params.get('service');
+      if (svc) {
+        var sel = document.getElementById('service');
+        for (var i = 0; i < sel.options.length; i++) {
+          if (sel.options[i].value === svc) {
+            sel.options[i].selected = true;
+            break;
+          }
+        }
+      }
+    })();
+
+    // Guests change → update additional services
+    document.getElementById('guests').addEventListener('change', updateAdditionalServices);
+    document.getElementById('samePackage').addEventListener('change', updateAdditionalServices);
+
+    function updateAdditionalServices() {
+      var guests = document.getElementById('guests').value;
+      var additionalServices = document.getElementById('additionalServices');
+      var container = document.getElementById('additionalServicesContainer');
+      var samePackageGroup = document.getElementById('samePackageGroup');
+      var samePackageCheckbox = document.getElementById('samePackage');
+
+      if (!guests || guests === '1') {
+        additionalServices.classList.remove('show');
+        container.innerHTML = '';
+        samePackageGroup.style.display = 'none';
+        return;
+      }
+
+      samePackageGroup.style.display = 'block';
+
+      if (samePackageCheckbox.checked) {
+        additionalServices.classList.remove('show');
+        container.innerHTML = '';
+        return;
+      }
+
+      var additionalCount = parseInt(guests) - 1;
+      var html = '';
+      for (var i = 1; i <= additionalCount; i++) {
+        html += '<div class="guest-service-row">' +
+          '<div class="guest-label">Guest ' + (i + 1) + '</div>' +
+          '<select name="guest' + i + 'Service" class="form-select">' +
+          serviceOptionsHTML +
+          '</select>' +
+          '</div>';
+      }
+      container.innerHTML = html;
+      additionalServices.classList.add('show');
+    }
+
+    function validateForm() {
+      var isValid = true;
+      document.querySelectorAll('.form-group').forEach(function(g) { g.classList.remove('error'); });
+
+      if (!document.getElementById('name').value.trim()) {
+        document.getElementById('nameGroup').classList.add('error');
+        isValid = false;
+      }
+      if (!document.getElementById('date').value) {
+        document.getElementById('dateGroup').classList.add('error');
+        isValid = false;
+      }
+      if (!document.getElementById('time').value) {
+        document.getElementById('timeGroup').classList.add('error');
+        isValid = false;
+      }
+      if (!document.getElementById('guests').value) {
+        document.getElementById('guestsGroup').classList.add('error');
+        isValid = false;
+      }
+      if (!document.getElementById('service').value) {
+        document.getElementById('serviceGroup').classList.add('error');
+        isValid = false;
+      }
+      return isValid;
+    }
+
+    function formatDate(dateString) {
+      var date = new Date(dateString + 'T00:00:00');
+      return date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+    }
+
+    function formatTime(timeString) {
+      var parts = timeString.split(':');
+      var hour = parseInt(parts[0]);
+      var ampm = hour >= 12 ? 'PM' : 'AM';
+      var displayHour = hour % 12 || 12;
+      return displayHour + ':' + parts[1] + ' ' + ampm;
+    }
+
+    function buildWhatsAppMessage(formData) {
+      var name = formData.get('name');
+      var date = formatDate(formData.get('date'));
+      var time = formatTime(formData.get('time'));
+      var guests = formData.get('guests');
+      var mainService = formData.get('service');
+      var mainInfo = serviceInfo[mainService] || { price: 0 };
+
+      var message = 'Hello, I would like to make a reservation at Regottz dua putri.\n\n';
+      message += 'Name: ' + name + '\n';
+      message += 'Date: ' + date + '\n';
+      message += 'Time: ' + time + '\n';
+      message += 'Number of Guests: ' + guests + '\n';
+      message += 'Main Guest: ' + mainService + ' (¥' + mainInfo.price.toLocaleString() + ')\n';
+
+      var guestCount = parseInt(guests);
+      var samePackage = formData.get('samePackage') === 'on';
+
+      if (samePackage) {
+        message += 'All guests choose the same package\n';
+      } else {
+        for (var i = 1; i < guestCount; i++) {
+          var gs = formData.get('guest' + i + 'Service');
+          if (gs && gs.trim()) {
+            var gInfo = serviceInfo[gs] || { price: 0 };
+            message += 'Guest ' + (i + 1) + ': ' + gs + ' (¥' + gInfo.price.toLocaleString() + ')\n';
+          }
+        }
+      }
+
+      var total = mainInfo.price;
+      if (samePackage) {
+        total = mainInfo.price * guestCount;
+      } else {
+        for (var j = 1; j < guestCount; j++) {
+          var gs2 = formData.get('guest' + j + 'Service');
+          if (gs2 && gs2.trim()) {
+            var gInfo2 = serviceInfo[gs2] || { price: 0 };
+            total += gInfo2.price;
+          }
+        }
+      }
+
+      if (total > 0) {
+        message += '\nTotal: ¥' + total.toLocaleString();
+      }
+
+      return encodeURIComponent(message);
+    }
+
+    document.getElementById('bookingForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      if (!validateForm()) return;
+
+      var formData = new FormData(this);
+      var message = buildWhatsAppMessage(formData);
+      var whatsappUrl = 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + message;
+
+      var successMessage = document.getElementById('successMessage');
+      var submitButton = document.getElementById('submitButton');
+
+      successMessage.classList.add('show');
+      submitButton.disabled = true;
+      submitButton.textContent = 'Redirecting...';
+
+      setTimeout(function() {
+        window.open(whatsappUrl, '_blank');
+      }, 500);
+    });
+
+    document.querySelectorAll('.form-input, .form-select').forEach(function(input) {
+      input.addEventListener('blur', function() {
+        var group = this.closest('.form-group');
+        if (this.hasAttribute('required') && !this.value.trim()) {
+          group.classList.add('error');
+        } else {
+          group.classList.remove('error');
+        }
+      });
+      input.addEventListener('input', function() {
+        var group = this.closest('.form-group');
+        if (group.classList.contains('error') && this.value.trim()) {
+          group.classList.remove('error');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
