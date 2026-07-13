@@ -1672,3 +1672,16 @@ html[lang="zh-CN"] .logo {
 
 /* intro label uses brand green (override .intro-text p) */
 .intro-text .section-label { color: var(--gold); }
+
+/* ===== Typography polish (patch): avoid orphaned single characters on narrow screens (esp. CJK / 中文单字换行) ===== */
+h1, h2, h3, h4,
+.hero-content h1, .intro-text h2, .section-header h2, .visit-info h2, .lang-brand-name {
+  text-wrap: pretty;
+}
+p, li, .hero-sub, .section-sub, .intro-text p, .intro-note, .menu-note, .menu-name, .footer-tagline {
+  text-wrap: pretty;
+}
+@media (max-width: 600px) {
+  /* mobile: neutralize desktop-oriented <br> in headings so CJK flows full width (avoids single-char orphans) */
+  .hero-content h1 br, .intro-text h2 br, .section-header h2 br, .visit-info h2 br, .lang-brand-name br { display: none; }
+}
