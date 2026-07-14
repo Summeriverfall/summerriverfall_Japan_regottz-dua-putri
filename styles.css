@@ -1652,23 +1652,6 @@ html[lang="zh-CN"] .logo {
 .btn-book-cta svg { width: 19px; height: 19px; fill: currentColor; flex-shrink: 0; }
 .btn-book-cta:hover { background: #20A05A; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(30,142,79,0.35); }
 
-.float-wa {
-  position: fixed;
-  right: 22px;
-  bottom: 22px;
-  z-index: 90;
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
-  background: #1E8E4F;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 10px 26px rgba(30,142,79,0.4);
-  transition: transform var(--transition), box-shadow var(--transition);
-}
-.float-wa svg { width: 28px; height: 28px; fill: #fff; }
-.float-wa:hover { transform: translateY(-4px) scale(1.05); box-shadow: 0 16px 34px rgba(30,142,79,0.5); }
 
 /* intro label uses brand green (override .intro-text p) */
 .intro-text .section-label { color: var(--gold); }
